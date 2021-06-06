@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 
 class HomePageTemp extends StatelessWidget {
-  const HomePageTemp({Key key}) : super(key: key);
+  HomePageTemp({Key key}) : super(key: key);
+
+  final options = [
+    'Uno',
+    'Dos',
+    'Tres',
+    'Cuatro',
+    'Cinco',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -10,21 +18,25 @@ class HomePageTemp extends StatelessWidget {
         title: Text('Componetes Temp'),
       ),
       body: ListView(
-        children: <Widget>[
-          ListTile(
-            title: Text('List Tile'),
-          ),
-          Divider(),
-          ListTile(
-            title: Text('List Tile'),
-          ),
-          Divider(),
-          ListTile(
-            title: Text('List Tile'),
-          ),
-          Divider(),
-        ],
+        children: _buildItemsLarge(),
       ),
     );
+  }
+
+  List<Widget> _buildItemsLarge() {
+    List<Widget> list = new List<Widget>();
+    for (String item in options) {
+      final _tempWidget = ListTile(
+        title: Text(
+          item,
+        ),
+      );
+      list
+        ..add(_tempWidget)
+        ..add(
+          Divider(),
+        );
+    }
+    return list;
   }
 }
