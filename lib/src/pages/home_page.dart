@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_components_udemy/src/pages/alert_page.dart';
 import 'package:flutter_components_udemy/src/providers/menu_provider.dart';
 import 'package:flutter_components_udemy/src/utils/icon_string_util.dart';
 
@@ -53,15 +52,9 @@ class HomePage extends StatelessWidget {
           color: Colors.green,
         ),
         onTap: () {
-          final route = MaterialPageRoute(
-            builder: (
-              context,
-            ) =>
-                AlertPage(),
-          );
-          Navigator.push(
+          Navigator.pushNamed(
             context,
-            route,
+            element['ruta'],
           );
         },
       );
