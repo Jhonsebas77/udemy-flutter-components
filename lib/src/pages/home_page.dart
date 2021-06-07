@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_components_udemy/src/pages/alert_page.dart';
 import 'package:flutter_components_udemy/src/providers/menu_provider.dart';
 import 'package:flutter_components_udemy/src/utils/icon_string_util.dart';
 
@@ -27,13 +28,17 @@ class HomePage extends StatelessWidget {
         return ListView(
           children: _buildListItem(
             snapshot.data,
+            context,
           ),
         );
       },
     );
   }
 
-  List<Widget> _buildListItem(List<dynamic> data) {
+  List<Widget> _buildListItem(
+    List<dynamic> data,
+    BuildContext context,
+  ) {
     final List<Widget> options = [];
     data.forEach((element) {
       final _widgetTemp = ListTile(
@@ -47,6 +52,18 @@ class HomePage extends StatelessWidget {
           Icons.keyboard_arrow_right_outlined,
           color: Colors.green,
         ),
+        onTap: () {
+          final route = MaterialPageRoute(
+            builder: (
+              context,
+            ) =>
+                AlertPage(),
+          );
+          Navigator.push(
+            context,
+            route,
+          );
+        },
       );
       options
         ..add(
