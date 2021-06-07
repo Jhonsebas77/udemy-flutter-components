@@ -15,17 +15,45 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _buildList() {
-    menuProvider.loadData();
-    return ListView(
-      children: _buildListItem(),
+    return FutureBuilder(
+      future: menuProvider.loadData(),
+      initialData: [],
+      builder: (
+        BuildContext context,
+        AsyncSnapshot<List<dynamic>> snapshot,
+      ) {
+        return ListView(
+          children: _buildListItem(
+            snapshot.data,
+          ),
+        );
+      },
     );
   }
 
-  List<Widget> _buildListItem() {
-    return [
-      ListTile(
-        title: Text('Hola'),
-      ),
-    ];
+  List<Widget> _buildListItem(List<dynamic> data) {
+    final List<Widget> options = [];
+    data.forEach((element) {
+      final _widgetTemp = ListTile(
+        title: Text(
+          element['texto'],
+        ),
+        leading: Icon(
+          Icons.access_alarm,
+          color: Colors.red,
+        ),
+        trailing: Icon(
+          Icons.keyboard_arrow_right_outlined,
+        ),
+      );
+      options
+        ..add(
+          _widgetTemp,
+        )
+        ..add(
+          Divider(),
+        );
+    });
+    return options;
   }
 }
