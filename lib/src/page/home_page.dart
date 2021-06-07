@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_components_udemy/src/providers/menu_provider.dart';
+import 'package:flutter_components_udemy/src/utils/icon_string_util.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key key}) : super(key: key);
@@ -9,6 +10,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Componetes'),
+        backgroundColor: Colors.green,
       ),
       body: _buildList(),
     );
@@ -38,12 +40,12 @@ class HomePage extends StatelessWidget {
         title: Text(
           element['texto'],
         ),
-        leading: Icon(
-          Icons.access_alarm,
-          color: Colors.red,
+        leading: getIcon(
+          element['icon'],
         ),
         trailing: Icon(
           Icons.keyboard_arrow_right_outlined,
+          color: Colors.green,
         ),
       );
       options
