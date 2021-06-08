@@ -20,12 +20,16 @@ class CardPage extends StatelessWidget {
         ),
         children: <Widget>[
           _cardType1(),
+          SizedBox(
+            height: 20,
+          ),
+          _cardType2(),
         ],
       ),
     );
   }
 
-  _cardType1() {
+  Widget _cardType1() {
     return Card(
       child: Column(
         children: [
@@ -49,6 +53,28 @@ class CardPage extends StatelessWidget {
                 child: Text('Cancel'),
               ),
             ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _cardType2() {
+    return Card(
+      child: Column(
+        children: [
+          FadeInImage(
+            placeholder: AssetImage(
+              'Assets/images/jar-loading.gif',
+            ),
+            image: NetworkImage(
+              'https://upload.wikimedia.org/wikipedia/commons/9/91/Oahu_Landscape.jpg',
+            ),
+            fadeInDuration: Duration(
+              milliseconds: 200,
+            ),
+            height: 300,
+            fit: BoxFit.fitWidth,
           ),
         ],
       ),
