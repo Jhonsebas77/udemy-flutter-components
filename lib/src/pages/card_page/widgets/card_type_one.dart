@@ -6,6 +6,12 @@ class CardType1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 10.0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(
+          20.0,
+        ),
+      ),
       child: Column(
         children: [
           ListTile(
@@ -20,17 +26,59 @@ class CardType1 extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               TextButton(
+                style: getButtonStyle(),
                 onPressed: () {},
-                child: Text('Accept'),
+                child: Text(
+                  'Accept',
+                ),
               ),
               TextButton(
+                style: getButtonStyle(),
                 onPressed: () {},
                 child: Text('Cancel'),
+              ),
+              SizedBox(
+                width: 10,
               ),
             ],
           ),
         ],
       ),
     );
+  }
+
+  ButtonStyle getButtonStyle() {
+    return ButtonStyle(
+      foregroundColor: MaterialStateProperty.resolveWith(
+        getColorForeground,
+      ),
+      overlayColor: MaterialStateProperty.resolveWith(
+        getColorBackground,
+      ),
+    );
+  }
+
+  Color getColorForeground(Set<MaterialState> states) {
+    const Set<MaterialState> interactiveStates = <MaterialState>{
+      MaterialState.pressed,
+      MaterialState.hovered,
+      MaterialState.focused,
+    };
+    if (states.any(interactiveStates.contains)) {
+      return Colors.green[300];
+    }
+    return Colors.green;
+  }
+
+  Color getColorBackground(Set<MaterialState> states) {
+    const Set<MaterialState> interactiveStates = <MaterialState>{
+      MaterialState.pressed,
+      MaterialState.hovered,
+      MaterialState.focused,
+    };
+    if (states.any(interactiveStates.contains)) {
+      return Colors.green[300];
+    }
+    return Colors.transparent;
   }
 }

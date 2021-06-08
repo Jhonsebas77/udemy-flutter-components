@@ -5,7 +5,30 @@ class CardType2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return Container(
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(30.0),
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+              color: Colors.lightGreen,
+              blurRadius: 10.0,
+              spreadRadius: 2.0,
+              offset: Offset(
+                2.0,
+                10.0,
+              ),
+            )
+          ]),
+      child: ClipRRect(
+        child: _buildCard(),
+        borderRadius: BorderRadius.circular(30.0),
+      ),
+    );
+  }
+
+  Widget _buildCard() {
+    return Container(
       child: Column(
         children: [
           FadeInImage(
@@ -19,7 +42,14 @@ class CardType2 extends StatelessWidget {
               milliseconds: 200,
             ),
             height: 300,
-            fit: BoxFit.fitWidth,
+            fit: BoxFit.cover,
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Text('A beautiful landscape'),
+          SizedBox(
+            height: 10,
           ),
         ],
       ),
