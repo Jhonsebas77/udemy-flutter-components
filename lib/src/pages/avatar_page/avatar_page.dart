@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_components_udemy/src/pages/avatar_page/widgets/avatar_circle_image.dart';
+import 'package:flutter_components_udemy/src/pages/avatar_page/widgets/avatar_circle_letter.dart';
 
 class AvatarPage extends StatelessWidget {
   const AvatarPage({Key key}) : super(key: key);
@@ -12,26 +14,11 @@ class AvatarPage extends StatelessWidget {
         ),
         backgroundColor: Colors.green,
         actions: [
-          Container(
-            padding: EdgeInsets.all(5),
-            child: CircleAvatar(
-              backgroundImage: NetworkImage(
-                'https://image.flaticon.com/icons/png/512/188/188987.png',
-              ),
-              backgroundColor: Colors.green[900],
-            ),
+          CircleAvatarImage(
+            url: 'https://image.flaticon.com/icons/png/512/188/188987.png',
           ),
-          Container(
-            margin: EdgeInsets.only(
-              right: 10,
-            ),
-            child: CircleAvatar(
-              child: Text(
-                'SO',
-              ),
-              backgroundColor: Colors.green[900],
-              foregroundColor: Colors.white,
-            ),
+          CircleAvatarName(
+            name: 'SO',
           ),
         ],
       ),
