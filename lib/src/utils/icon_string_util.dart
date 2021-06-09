@@ -5,6 +5,7 @@ final _icons = <String, IconData>{
   'accessibility': Icons.accessibility,
   'folder_open': Icons.folder_open,
   'play_circle_fill': Icons.play_circle_fill,
+  'input': Icons.input,
 };
 
 Icon getIcon(String nameIcon) => Icon(
