@@ -23,7 +23,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  flutter_localizations:
+    sdk: flutter
+  intl_translation: ^0.17.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -32,6 +34,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  intl_utils: ^1.9.0
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -48,6 +52,14 @@ flutter:
   assets:
     - Assets/json/
     - Assets/images/
+
+flutter_intl:
+  enabled: false
+  class_name: L10n
+  main_locale: es_ES
+  arb_dir: lib/config/l10n
+  template-arb-file: app_en.arb
+  output_dir: lib/config/l10n/generated
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

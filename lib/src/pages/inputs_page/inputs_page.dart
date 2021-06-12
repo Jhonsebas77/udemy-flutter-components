@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_components_udemy/config/l10n/generated/l10n.dart';
 import 'package:flutter_components_udemy/src/pages/inputs_page/widgets/input_email_field.dart';
 import 'package:flutter_components_udemy/src/pages/inputs_page/widgets/input_field.dart';
 import 'package:flutter_components_udemy/src/pages/inputs_page/widgets/input_password_field.dart';
@@ -119,7 +120,7 @@ class _InputsPageState extends State<InputsPage> {
         focusColor: Colors.green,
         hoverColor: Colors.green,
         hintText: 'Birth date',
-        labelText: 'Birth date',
+        labelText: L10n.current.inputBirthDate,
         suffixIcon: Icon(
           Icons.perm_contact_calendar,
           color: Colors.green,
@@ -143,6 +144,7 @@ class _InputsPageState extends State<InputsPage> {
       initialDate: new DateTime.now(),
       firstDate: new DateTime(2019),
       lastDate: new DateTime(2025),
+      locale: Locale('es', 'ES'),
     );
 
     if (picked != null) {
