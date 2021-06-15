@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 
 class ListViewPage extends StatefulWidget {
@@ -11,6 +12,7 @@ class _ListViewPageState extends State<ListViewPage> {
   ScrollController _scrollController = new ScrollController();
   List<int> _numberList = new List();
   int _lastNumber = 0;
+  bool isLoading = false;
 
   @override
   void initState() {
@@ -19,9 +21,15 @@ class _ListViewPageState extends State<ListViewPage> {
     _scrollController.addListener(() {
       if (_scrollController.position.pixels ==
           _scrollController.position.maxScrollExtent) {
-        _addMoreImages(10);
+        _fetchData();
       }
     });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _scrollController.dispose();
   }
 
   @override
@@ -33,7 +41,12 @@ class _ListViewPageState extends State<ListViewPage> {
         ),
         backgroundColor: Colors.green,
       ),
-      body: _buildList(),
+      body: Stack(
+        children: [
+          _buildList(),
+          _buildLoading(),
+        ],
+      ),
     );
   }
 
@@ -65,5 +78,52 @@ class _ListViewPageState extends State<ListViewPage> {
       _numberList.add(_lastNumber);
     }
     setState(() {});
+  }
+
+  Future _fetchData() async {
+    isLoading = true;
+    setState(() {});
+    final _duration = new Duration(
+      seconds: 2,
+    );
+    return new Timer(
+      _duration,
+      _requestHttp,
+    );
+  }
+
+  void _requestHttp() {
+    isLoading = false;
+    _addMoreImages(10);
+    _scrollController.animateTo(
+      _scrollController.position.pixels + 100,
+      duration: Duration(
+        milliseconds: 250,
+      ),
+      curve: Curves.fastOutSlowIn,
+    );
+  }
+
+  Widget _buildLoading() {
+    return isLoading
+        ? Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CircularProgressIndicator(
+                    strokeWidth: 2,
+                    backgroundColor: Colors.green,
+                  )
+                ],
+              ),
+              SizedBox(
+                height: 15,
+              ),
+            ],
+          )
+        : Container();
   }
 }
