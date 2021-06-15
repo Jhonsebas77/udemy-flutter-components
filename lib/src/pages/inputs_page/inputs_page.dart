@@ -16,12 +16,11 @@ class _InputsPageState extends State<InputsPage> {
   String _email;
   String _password = '';
   String _date = '';
-  String _selectOption = '- - -';
+  String _selectOption = 'Male';
 
   List<String> _gender = [
-    'Masculino',
-    'Femenino',
-    '- - -',
+    'Male',
+    'Female',
   ];
 
   TextEditingController _inputFieldDateController = new TextEditingController();
@@ -49,9 +48,9 @@ class _InputsPageState extends State<InputsPage> {
           _buildDivider(),
           _buildDatePicker(),
           _buildDivider(),
-          _buildPerson(),
-          _buildDivider(),
           _buildDropDown(),
+          _buildDivider(),
+          _buildPerson(),
         ],
       ),
     );
@@ -62,7 +61,10 @@ class _InputsPageState extends State<InputsPage> {
           SizedBox(
             height: 10,
           ),
-          Divider(),
+          Divider(
+            thickness: 1,
+            color: Colors.green,
+          ),
           SizedBox(
             height: 10,
           ),
@@ -93,9 +95,9 @@ class _InputsPageState extends State<InputsPage> {
           : Icon(
               Icons.vpn_key_outlined,
             ),
-      trailing: _selectOption == 'Masculino'
+      trailing: _selectOption == 'Male'
           ? Icon(
-              Icons.verified_user,
+              Icons.accessibility_new,
             )
           : Icon(
               Icons.pregnant_woman,
@@ -174,7 +176,6 @@ class _InputsPageState extends State<InputsPage> {
   List<DropdownMenuItem<String>> getOptionDropdown() {
     List<DropdownMenuItem<String>> _list = new List();
     _gender.forEach((_power) {
-      print('_power: $_power ');
       _list.add(
         DropdownMenuItem(
           child: Text(
@@ -195,8 +196,11 @@ class _InputsPageState extends State<InputsPage> {
         setState(() {
           _selectOption = _opt;
         });
-        print(_opt);
       },
+      icon: Icon(
+        Icons.wc,
+      ),
+      isExpanded: true,
     );
   }
 }
