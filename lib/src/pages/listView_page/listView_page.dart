@@ -57,17 +57,26 @@ class _ListViewPageState extends State<ListViewPage> {
         itemCount: _numberList.length,
         itemBuilder: (BuildContext context, int index) {
           final _image = _numberList[index];
-          return FadeInImage(
-            placeholder: AssetImage(
-              'Assets/images/jar-loading.gif',
+          return Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: 10,
+              vertical: 5,
             ),
-            image: NetworkImage(
-              'https://picsum.photos/500/300/?image=$_image',
+            child: ClipRRect(
+              child: FadeInImage(
+                placeholder: AssetImage(
+                  'Assets/images/jar-loading.gif',
+                ),
+                image: NetworkImage(
+                  'https://picsum.photos/500/300/?image=$_image',
+                ),
+                fadeInDuration: Duration(
+                  milliseconds: 200,
+                ),
+                fit: BoxFit.contain,
+              ),
+              borderRadius: BorderRadius.circular(10.0),
             ),
-            fadeInDuration: Duration(
-              milliseconds: 200,
-            ),
-            fit: BoxFit.contain,
           );
         },
       ),

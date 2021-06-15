@@ -40,7 +40,7 @@ class AlertPage extends StatelessWidget {
             actions: [
               TextButton(
                 // style: getButtonStyle(),
-                onPressed: () {},
+                onPressed: () => Navigator.pop(context),
                 child: Text(
                   'Accept',
                 ),

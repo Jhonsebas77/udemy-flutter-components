@@ -5,6 +5,8 @@ import 'package:flutter_components_udemy/src/pages/avatar_page/widgets/avatar_ci
 class AvatarPage extends StatelessWidget {
   const AvatarPage({Key key}) : super(key: key);
 
+  static final pageName = 'avatar';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

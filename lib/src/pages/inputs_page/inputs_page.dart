@@ -40,6 +40,8 @@ class _InputsPageState extends State<InputsPage> {
           vertical: 20.0,
         ),
         children: [
+          _buildPerson(),
+          _buildDivider(),
           _buildInput(),
           _buildDivider(),
           _buildEmailInput(),
@@ -49,8 +51,6 @@ class _InputsPageState extends State<InputsPage> {
           _buildDatePicker(),
           _buildDivider(),
           _buildDropDown(),
-          _buildDivider(),
-          _buildPerson(),
         ],
       ),
     );
@@ -81,27 +81,30 @@ class _InputsPageState extends State<InputsPage> {
       );
 
   Widget _buildPerson() {
-    return ListTile(
-      title: Text(
-        'Name is: ${_name ?? ''}',
-      ),
-      subtitle: Text(
-        'Email is: ${_email ?? ''}',
-      ),
-      leading: _password.isNotEmpty
-          ? Icon(
-              Icons.vpn_key,
-            )
-          : Icon(
-              Icons.vpn_key_outlined,
-            ),
-      trailing: _selectOption == 'Male'
+    return Chip(
+      backgroundColor: Colors.green[100],
+      avatar: _selectOption == 'Male'
           ? Icon(
               Icons.accessibility_new,
             )
           : Icon(
               Icons.pregnant_woman,
             ),
+      label: ListTile(
+        title: Text(
+          'Name is: ${_name ?? ''}',
+        ),
+        subtitle: Text(
+          'Email is: ${_email ?? ''}',
+        ),
+        trailing: _password.isNotEmpty
+            ? Icon(
+                Icons.vpn_key,
+              )
+            : Icon(
+                Icons.vpn_key_outlined,
+              ),
+      ),
     );
   }
 
@@ -180,6 +183,9 @@ class _InputsPageState extends State<InputsPage> {
         DropdownMenuItem(
           child: Text(
             _power,
+            style: TextStyle(
+              color: Colors.green,
+            ),
           ),
           value: _power,
         ),
@@ -190,6 +196,10 @@ class _InputsPageState extends State<InputsPage> {
 
   Widget _buildDropDown() {
     return DropdownButton(
+      hint: Text(
+        'Gender',
+      ),
+      isDense: true,
       value: _selectOption,
       items: getOptionDropdown(),
       onChanged: (_opt) {
@@ -199,7 +209,9 @@ class _InputsPageState extends State<InputsPage> {
       },
       icon: Icon(
         Icons.wc,
+        color: Colors.green,
       ),
+      focusColor: Colors.green,
       isExpanded: true,
     );
   }

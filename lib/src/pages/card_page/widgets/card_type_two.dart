@@ -7,19 +7,20 @@ class CardType2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(30.0),
-          boxShadow: <BoxShadow>[
-            BoxShadow(
-              color: Colors.lightGreen,
-              blurRadius: 10.0,
-              spreadRadius: 2.0,
-              offset: Offset(
-                2.0,
-                10.0,
-              ),
-            )
-          ]),
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(30.0),
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+            color: Colors.green[100],
+            blurRadius: 10.0,
+            spreadRadius: 2.0,
+            offset: Offset(
+              2.0,
+              10.0,
+            ),
+          )
+        ],
+      ),
       child: ClipRRect(
         child: _buildCard(),
         borderRadius: BorderRadius.circular(30.0),

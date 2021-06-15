@@ -11,7 +11,7 @@ import 'package:flutter_components_udemy/src/pages/slider_page/slider_page.dart'
 Map<String, WidgetBuilder> getApplicationRoutes() => <String, WidgetBuilder>{
       '/': (BuildContext context) => HomePage(),
       'alert': (BuildContext context) => AlertPage(),
-      'avatar': (BuildContext context) => AvatarPage(),
+      AvatarPage.pageName: (BuildContext context) => AvatarPage(),
       'card': (BuildContext context) => CardPage(),
       'animated': (BuildContext context) => AnimatedContainerPage(),
       'inputs': (BuildContext context) => InputsPage(),

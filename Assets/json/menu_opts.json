@@ -8,12 +8,12 @@
         },
         {
             "ruta" : "avatar",
-            "icon" : "accessibility",
+            "icon" : "account_circle_rounded",
             "texto": "Avatars"
         },
         {
             "ruta" : "card",
-            "icon" : "folder_open",
+            "icon" : "contact_mail",
             "texto": "Cards"
         },
         {

@@ -55,7 +55,7 @@ class _SliderPageState extends State<SliderPage> {
             }
           : null,
       activeColor: Colors.green,
-      inactiveColor: Colors.greenAccent,
+      inactiveColor: Colors.green[100],
       label: 'Size Image',
       // divisions: 10,
     );
@@ -93,6 +93,7 @@ class _SliderPageState extends State<SliderPage> {
       ),
       secondary: Icon(
         Icons.photo_size_select_large_sharp,
+        color: Colors.green,
       ),
       activeColor: Colors.green,
     );
@@ -114,6 +115,7 @@ class _SliderPageState extends State<SliderPage> {
       ),
       secondary: Icon(
         Icons.photo_size_select_large,
+        color: Colors.green,
       ),
       activeColor: Colors.green,
     );
