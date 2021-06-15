@@ -16,6 +16,13 @@ class _InputsPageState extends State<InputsPage> {
   String _email;
   String _password = '';
   String _date = '';
+  String _selectOption = '- - -';
+
+  List<String> _gender = [
+    'Masculino',
+    'Femenino',
+    '- - -',
+  ];
 
   TextEditingController _inputFieldDateController = new TextEditingController();
 
@@ -43,6 +50,8 @@ class _InputsPageState extends State<InputsPage> {
           _buildDatePicker(),
           _buildDivider(),
           _buildPerson(),
+          _buildDivider(),
+          _buildDropDown(),
         ],
       ),
     );
@@ -83,6 +92,13 @@ class _InputsPageState extends State<InputsPage> {
             )
           : Icon(
               Icons.vpn_key_outlined,
+            ),
+      trailing: _selectOption == 'Masculino'
+          ? Icon(
+              Icons.verified_user,
+            )
+          : Icon(
+              Icons.pregnant_woman,
             ),
     );
   }
@@ -153,5 +169,34 @@ class _InputsPageState extends State<InputsPage> {
         _inputFieldDateController.text = _date;
       });
     }
+  }
+
+  List<DropdownMenuItem<String>> getOptionDropdown() {
+    List<DropdownMenuItem<String>> _list = new List();
+    _gender.forEach((_power) {
+      print('_power: $_power ');
+      _list.add(
+        DropdownMenuItem(
+          child: Text(
+            _power,
+          ),
+          value: _power,
+        ),
+      );
+    });
+    return _list;
+  }
+
+  Widget _buildDropDown() {
+    return DropdownButton(
+      value: _selectOption,
+      items: getOptionDropdown(),
+      onChanged: (_opt) {
+        setState(() {
+          _selectOption = _opt;
+        });
+        print(_opt);
+      },
+    );
   }
 }
