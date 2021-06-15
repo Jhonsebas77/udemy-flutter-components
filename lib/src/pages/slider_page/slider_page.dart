@@ -9,6 +9,7 @@ class SliderPage extends StatefulWidget {
 
 class _SliderPageState extends State<SliderPage> {
   double _sliderValue = 200.0;
+  bool _lockSlider = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,9 +28,11 @@ class _SliderPageState extends State<SliderPage> {
           children: [
             _buildSlider(),
             Text(
-              '${_sliderValue.floor()}',
+              'Width image: ${_sliderValue.floor()} px',
               textAlign: TextAlign.center,
             ),
+            _buildCheckBox(),
+            _buildCheckSwitch(),
             Expanded(
               child: _buildImage(),
             ),
@@ -44,11 +47,13 @@ class _SliderPageState extends State<SliderPage> {
       value: _sliderValue,
       min: 0.0,
       max: 400.0,
-      onChanged: (value) {
-        setState(() {
-          _sliderValue = value;
-        });
-      },
+      onChanged: _lockSlider
+          ? (value) {
+              setState(() {
+                _sliderValue = value;
+              });
+            }
+          : null,
       activeColor: Colors.green,
       inactiveColor: Colors.greenAccent,
       label: 'Size Image',
@@ -69,6 +74,48 @@ class _SliderPageState extends State<SliderPage> {
       ),
       width: _sliderValue,
       fit: BoxFit.contain,
+    );
+  }
+
+  Widget _buildCheckBox() {
+    return CheckboxListTile(
+      value: _lockSlider,
+      onChanged: (value) {
+        setState(() {
+          _lockSlider = value;
+        });
+      },
+      title: Text(
+        'Enable Slider',
+      ),
+      subtitle: Text(
+        'Enable to change the image size',
+      ),
+      secondary: Icon(
+        Icons.photo_size_select_large_sharp,
+      ),
+      activeColor: Colors.green,
+    );
+  }
+
+  Widget _buildCheckSwitch() {
+    return SwitchListTile(
+      value: _lockSlider,
+      onChanged: (value) {
+        setState(() {
+          _lockSlider = value;
+        });
+      },
+      title: Text(
+        'Enable Slider',
+      ),
+      subtitle: Text(
+        'Same, but in SwitchListTile',
+      ),
+      secondary: Icon(
+        Icons.photo_size_select_large,
+      ),
+      activeColor: Colors.green,
     );
   }
 }
