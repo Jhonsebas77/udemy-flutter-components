@@ -28,8 +28,13 @@
         },
         {
             "ruta" : "sliders",
-            "icon" : "sliders",
+            "icon" : "tune",
             "texto": "Sliders"
+        },
+        {
+            "ruta" : "listview",
+            "icon" : "list_alt",
+            "texto": "List View and Scroll"
         }
     ]
 }
