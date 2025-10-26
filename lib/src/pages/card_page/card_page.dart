@@ -3,7 +3,7 @@ import 'package:flutter_components_udemy/src/pages/card_page/widgets/card_type_o
 import 'package:flutter_components_udemy/src/pages/card_page/widgets/card_type_two.dart';
 
 class CardPage extends StatelessWidget {
-  const CardPage({Key key}) : super(key: key);
+  const CardPage({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -3,7 +3,7 @@ import 'package:flutter_components_udemy/src/providers/menu_provider.dart';
 import 'package:flutter_components_udemy/src/utils/icon_string_util.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
       ) {
         return ListView(
           children: _buildListItem(
-            snapshot.data,
+            snapshot.data!,
             context,
           ),
         );

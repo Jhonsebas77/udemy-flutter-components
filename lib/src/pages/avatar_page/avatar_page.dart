@@ -3,7 +3,7 @@ import 'package:flutter_components_udemy/src/pages/avatar_page/widgets/avatar_ci
 import 'package:flutter_components_udemy/src/pages/avatar_page/widgets/avatar_circle_letter.dart';
 
 class AvatarPage extends StatelessWidget {
-  const AvatarPage({Key key}) : super(key: key);
+  const AvatarPage({super.key});
 
   static final pageName = 'avatar';
 

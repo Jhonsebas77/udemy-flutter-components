@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SliderPage extends StatefulWidget {
-  SliderPage({Key key}) : super(key: key);
+  SliderPage({super.key});
 
   @override
   _SliderPageState createState() => _SliderPageState();
@@ -13,17 +13,9 @@ class _SliderPageState extends State<SliderPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Sliders',
-        ),
-        backgroundColor: Colors.green,
-      ),
+      appBar: AppBar(title: Text('Sliders'), backgroundColor: Colors.green),
       body: Container(
-        padding: EdgeInsets.symmetric(
-          horizontal: 10.0,
-          vertical: 40.0,
-        ),
+        padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 40.0),
         child: Column(
           children: [
             _buildSlider(),
@@ -33,9 +25,7 @@ class _SliderPageState extends State<SliderPage> {
             ),
             _buildCheckBox(),
             _buildCheckSwitch(),
-            Expanded(
-              child: _buildImage(),
-            ),
+            Expanded(child: _buildImage()),
           ],
         ),
       ),
@@ -47,13 +37,14 @@ class _SliderPageState extends State<SliderPage> {
       value: _sliderValue,
       min: 0.0,
       max: 400.0,
-      onChanged: _lockSlider
-          ? (value) {
-              setState(() {
-                _sliderValue = value;
-              });
-            }
-          : null,
+      onChanged:
+          _lockSlider
+              ? (value) {
+                setState(() {
+                  _sliderValue = value;
+                });
+              }
+              : null,
       activeColor: Colors.green,
       inactiveColor: Colors.green[100],
       label: 'Size Image',
@@ -63,15 +54,11 @@ class _SliderPageState extends State<SliderPage> {
 
   Widget _buildImage() {
     return FadeInImage(
-      placeholder: AssetImage(
-        'Assets/images/jar-loading.gif',
-      ),
+      placeholder: AssetImage('Assets/images/jar-loading.gif'),
       image: NetworkImage(
         'https://i.pinimg.com/originals/00/19/6c/00196c7c8e41a7b958daae0543694ce1.jpg',
       ),
-      fadeInDuration: Duration(
-        milliseconds: 200,
-      ),
+      fadeInDuration: Duration(milliseconds: 200),
       width: _sliderValue,
       fit: BoxFit.contain,
     );
@@ -82,19 +69,12 @@ class _SliderPageState extends State<SliderPage> {
       value: _lockSlider,
       onChanged: (value) {
         setState(() {
-          _lockSlider = value;
+          _lockSlider = value ?? false;
         });
       },
-      title: Text(
-        'Enable Slider',
-      ),
-      subtitle: Text(
-        'Enable to change the image size',
-      ),
-      secondary: Icon(
-        Icons.photo_size_select_large_sharp,
-        color: Colors.green,
-      ),
+      title: Text('Enable Slider'),
+      subtitle: Text('Enable to change the image size'),
+      secondary: Icon(Icons.photo_size_select_large_sharp, color: Colors.green),
       activeColor: Colors.green,
     );
   }
@@ -107,17 +87,10 @@ class _SliderPageState extends State<SliderPage> {
           _lockSlider = value;
         });
       },
-      title: Text(
-        'Enable Slider',
-      ),
-      subtitle: Text(
-        'Same, but in SwitchListTile',
-      ),
-      secondary: Icon(
-        Icons.photo_size_select_large,
-        color: Colors.green,
-      ),
-      activeColor: Colors.green,
+      title: Text('Enable Slider'),
+      subtitle: Text('Same, but in SwitchListTile'),
+      secondary: Icon(Icons.photo_size_select_large, color: Colors.green),
+      activeThumbColor: Colors.green,
     );
   }
 }

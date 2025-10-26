@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CardType2 extends StatelessWidget {
-  const CardType2({Key key}) : super(key: key);
+  const CardType2({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +11,7 @@ class CardType2 extends StatelessWidget {
         borderRadius: BorderRadius.circular(30.0),
         boxShadow: <BoxShadow>[
           BoxShadow(
-            color: Colors.green[100],
+            color: Colors.green[100]!,
             blurRadius: 10.0,
             spreadRadius: 2.0,
             offset: Offset(

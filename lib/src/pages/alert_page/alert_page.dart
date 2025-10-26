@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AlertPage extends StatelessWidget {
-  const AlertPage({Key key}) : super(key: key);
+  const AlertPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class AlertPage extends StatelessWidget {
           onPressed: () => _showAlert(context),
           child: Text('Show Alert'),
           style: ElevatedButton.styleFrom(
-            primary: Colors.green,
+            backgroundColor: Colors.green,
             shape: StadiumBorder(),
           ),
         ),

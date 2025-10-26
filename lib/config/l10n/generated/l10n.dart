@@ -1,6 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
 import 'intl/messages_all.dart';
 
 // **************************************************************************
@@ -14,35 +15,32 @@ import 'intl/messages_all.dart';
 
 class L10n {
   L10n();
-  
-  static L10n current;
-  
-  static const AppLocalizationDelegate delegate =
-    AppLocalizationDelegate();
+
+  static late L10n current;
+
+  static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<L10n> load(Locale locale) {
-    final name = (locale.countryCode?.isEmpty ?? false) ? locale.languageCode : locale.toString();
-    final localeName = Intl.canonicalizedLocale(name); 
+    final name =
+        (locale.countryCode?.isEmpty ?? false)
+            ? locale.languageCode
+            : locale.toString();
+    final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
       L10n.current = L10n();
-      
+
       return L10n.current;
     });
-  } 
+  }
 
-  static L10n of(BuildContext context) {
+  static L10n? of(BuildContext context) {
     return Localizations.of<L10n>(context, L10n);
   }
 
   /// `Hola Mundo!`
   String get helloWorld {
-    return Intl.message(
-      'Hola Mundo!',
-      name: 'helloWorld',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Hola Mundo!', name: 'helloWorld', desc: '', args: []);
   }
 
   /// `Fecha de cumpleaños`
@@ -74,11 +72,9 @@ class AppLocalizationDelegate extends LocalizationsDelegate<L10n> {
   bool shouldReload(AppLocalizationDelegate old) => false;
 
   bool _isSupported(Locale locale) {
-    if (locale != null) {
-      for (var supportedLocale in supportedLocales) {
-        if (supportedLocale.languageCode == locale.languageCode) {
-          return true;
-        }
+    for (var supportedLocale in supportedLocales) {
+      if (supportedLocale.languageCode == locale.languageCode) {
+        return true;
       }
     }
     return false;
